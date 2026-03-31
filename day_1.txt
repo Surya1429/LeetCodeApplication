@@ -1,0 +1,1589 @@
+leetcode-clone/
+│
+├── api-gateway/
+├── auth-service/
+├── user-service/
+├── problem-service/
+├── submission-service/
+├── discovery-server/
+
+
+✅ Fill This Form (DO EXACTLY SAME)
+🔹 Top Section
+Project → ✅ Maven
+Language → ✅ Java
+Spring Boot → ✅ 3.5.13 (select this, not 4.x)
+🔹 Project Metadata
+
+Fill like this:
+
+Group: com.leetcode
+Artifact: discovery-server
+Name: discovery-server
+Package name: com.leetcode.discoveryserver
+Packaging: Jar
+Java: 17
+🔹 Dependencies (IMPORTANT)
+
+Click ADD...
+
+Search and add:
+
+Spring Web
+Eureka Server
+
+Make sure both are added ✅
+
+
+🧠 What is application.properties?
+
+👉 It is a configuration file for your Spring Boot app.
+
+👉 Think like:
+
+"Settings file for your application"
+
+🎯 Simple Analogy
+Mobile App → Settings (WiFi, Theme, Notifications)
+Spring App → application.properties (port, DB, Eureka, etc.)
+
+
+server.port=8081    ---------------  Run this service on port 8081
+
+spring.application.name=auth-service--------------------   This is the name shown in Eureka
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka---------- Connect to Eureka Server at this URL
+
+
+spring.datasource.url=jdbc:mysql://localhost:3306/leetcode_auth
+spring.datasource.username=root
+spring.datasource.password=your_password  ------------ Connect to MySQL database
+
+
+🔹 5. JPA / Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+👉 Meaning:
+
+update → auto create/update tables
+show-sql=true → print SQL queries in console
+
+
+🧠 Easy Way to Remember
+
+👉 Just remember this pattern:
+
+application.properties =
+   PORT + NAME + CONNECTIONS + DATABASE + BEHAVIOR
+
+
+
+🧠 Explanation (Simple)
+Annotation	Meaning
+@Entity	This class = DB table
+@Table	Table name = users
+@Id	Primary key
+@GeneratedValue	Auto increment
+@Column	Column rules
+
+
+⚠️ Important
+
+Make sure:
+
+spring.jpa.hibernate.ddl-auto=update
+
+Otherwise table won’t create
+
+
+
+🧱 STEP 1: Create Project Structure
+
+👉 Create a main folder:
+
+leetcode-clone/
+
+Inside it, create separate services:
+
+leetcode-clone/
+│
+├── api-gateway/
+├── auth-service/
+├── user-service/
+├── problem-service/
+├── submission-service/
+├── discovery-server/
+
+
+in previous chat you have given this info to start right.. i hope you remeber this..so guide me where i have to create this structure.. is it to create in github or in local?
+
+Yes, I remember 👍 — you're starting your LeetCode-like microservices project, and this is the correct first step.
+
+🔥 Short Answer:
+👉 Create this structure in your LOCAL system first, not directly in GitHub.
+
+🧠 Why Local First (Important)
+Think of it like this:
+
+💻 Local machine → where you develop, run, debug
+
+☁️ GitHub → where you store, version, share
+
+If you create directly in GitHub:
+
+❌ You can’t run Spring Boot services
+
+❌ You can’t test APIs
+
+❌ No proper development workflow
+
+So always:
+
+✅ Develop locally → then push to GitHub
+
+🛠️ Step-by-Step Setup (Correct Way)
+1️⃣ Create Main Folder (Local)
+In your system (anywhere like Documents or Workspace):
+
+mkdir leetcode-clone
+cd leetcode-clone
+2️⃣ Create Microservice Folders
+mkdir api-gateway auth-service user-service problem-service submission-service discovery-server
+Now your structure:
+
+leetcode-clone/
+│
+├── api-gateway/
+├── auth-service/
+├── user-service/
+├── problem-service/
+├── submission-service/
+├── discovery-server/
+3️⃣ Open in IDE
+Open this folder in:
+
+IntelliJ IDEA (recommended for Spring Boot)
+
+👉 Then create separate Spring Boot projects inside each folder
+
+4️⃣ Initialize Git (Local)
+Inside leetcode-clone/:
+
+git init
+git add .
+git commit -m "Initial microservices structure"
+5️⃣ Push to GitHub
+Go to GitHub → Create repo: leetcode-clone
+
+Then run:
+
+git remote add origin https://github.com/your-username/leetcode-clone.git
+git branch -M main
+git push -u origin main
+🧱 Final Workflow (Very Important)
+👉 Follow this always:
+
+Code locally → Test → Commit → Push to GitHub
+🚀 Pro Tip (From Real Experience)
+Don’t create all services fully at once.
+
+👉 Start in this order:
+
+discovery-server (Eureka)
+
+api-gateway
+
+auth-service
+
+Others later
+
+❓ Next Step
+If you're ready, I’ll guide you step-by-step:
+
+👉 STEP 2: Create Discovery Server (Eureka Server)
+(with full dependencies + code + config)
+
+Just say "next" 👍
+
+
+3️⃣ Open in IDE
+
+Open this folder in:
+
+IntelliJ IDEA (recommended for Spring Boot)
+
+👉 Then create separate Spring Boot projects inside each folder
+how to do this give me simple and short explanation
+
+Got it 👍 I’ll keep it simple and practical.
+
+🧱 How to Create Spring Boot Projects Inside Each Folder (IntelliJ)
+✅ Step 1: Open Main Folder
+Open IntelliJ IDEA
+
+Click Open
+
+Select your folder → leetcode-clone
+
+✅ Step 2: Create First Service (Example: discovery-server)
+Right-click on leetcode-clone
+
+Click:
+
+New → Module
+Choose:
+
+Spring Initializr
+Fill details:
+
+Group: com.leetcode
+
+Artifact: discovery-server
+
+Click Next
+
+✅ Step 3: Add Dependencies
+For now (discovery server):
+
+Add:
+
+Spring Web
+
+Eureka Server (Spring Cloud)
+
+Click Finish
+
+👉 IntelliJ will automatically create project inside:
+
+leetcode-clone/discovery-server
+✅ Step 4: Repeat for Other Services
+Do same for:
+
+api-gateway
+
+auth-service
+
+user-service
+
+problem-service
+
+submission-service
+
+⚡ Important Tip
+While creating each module:
+👉 Make sure Project Location = correct folder
+
+Example:
+
+.../leetcode-clone/api-gateway
+🧠 Simple Understanding
+You are basically doing:
+
+👉 1 folder = 1 Spring Boot app
+
+🚀 That’s it!
+Next step (very important):
+
+👉 I’ll help you build Eureka Discovery Server fully (with code + config)
+
+Just say "next" 👍
+
+
+Uploaded image
+how to do step 2
+
+Perfect 👍 you already created folders correctly — good start.
+
+Now I’ll show exactly how to do Step 2 (create Spring Boot project inside one folder).
+
+✅ STEP 2 (Very Simple)
+We will create project inside 👉 discovery-server
+
+🔹 Method 1 (Recommended)
+Right-click on discovery-server folder
+
+Click:
+
+New → Module
+(If you don’t see Module → use Method 2 below)
+
+🔹 Method 2 (Most Common in IntelliJ)
+Click File (top menu)
+
+Click:
+
+New → Project
+Select:
+
+Spring Initializr
+🔹 Fill Details
+Name: discovery-server
+
+Location:
+👉 VERY IMPORTANT → Select:
+
+E:\leetcode-clone\discovery-server
+Group: com.leetcode
+
+Click Next
+
+🔹 Add Dependencies
+Select:
+
+✅ Spring Web
+
+✅ Eureka Server
+
+Click Finish
+
+✅ After This
+Your discovery-server folder will now contain:
+
+src/
+pom.xml
+application.properties
+main class
+👉 That means Spring Boot project is created successfully
+
+⚠️ Common Mistake (Avoid This)
+❌ Don’t create project in wrong path like:
+
+E:\leetcode-clone
+✅ Must be:
+
+E:\leetcode-clone\discovery-server
+🚀 Next
+Once you finish this, tell me:
+
+👉 "done"
+
+I’ll give you:
+✅ Eureka Server configuration
+✅ Annotations
+✅ Run and test steps
+
+This is where real microservices journey starts 🔥
+
+
+Uploaded image
+i didnt find any spring intializer here
+
+Good catch 👍 — this is a common issue.
+
+👉 You are NOT seeing Spring Initializr because the Spring plugin is not enabled/installed in IntelliJ IDEA.
+
+✅ Fix (Very Simple)
+🔹 Step 1: Enable Spring Plugin
+Go to:
+
+File → Settings
+Click:
+
+Plugins
+In search bar, type:
+
+Spring
+Find:
+
+Spring Boot / Spring
+Click Install (or Enable if already installed)
+
+🔹 Step 2: Restart IntelliJ
+👉 VERY IMPORTANT
+After installing, click:
+
+Restart IDE
+🔹 Step 3: Try Again
+Now go to:
+
+File → New → Project
+👉 You should now see:
+
+Spring Initializr ✅
+⚠️ If Still Not Showing
+Then you are likely using Community Edition
+
+👉 In that case:
+
+Spring Initializr is NOT available by default
+
+🔥 Alternative (Works Always)
+Use browser:
+
+Go to 👉 Spring Initializr
+
+Fill:
+
+Project: Maven
+
+Language: Java
+
+Name: discovery-server
+
+Add dependencies:
+
+Spring Web
+
+Eureka Server
+
+Click Generate
+
+Download zip
+
+Extract into:
+
+E:\leetcode-clone\discovery-server
+In IntelliJ:
+
+Right click → Open as Project
+🧠 Recommendation
+👉 If possible, use:
+
+IntelliJ Ultimate Edition (best for Spring Boot)
+
+But don’t worry — browser method works perfectly fine 💯
+
+🚀 Next
+Once your discovery-server project is created:
+
+👉 say "done"
+
+I’ll guide you to:
+✅ Convert it into Eureka Server
+✅ Add config
+✅ Run it
+
+This is where real microservices begin 🔥
+
+
+i created folders  manually .. next what i have to do please say clearly
+
+Perfect 👍 you’ve done the right first step (folders created).
+Now let’s move clearly step-by-step — no confusion.
+
+✅ ✅ NEXT STEP (VERY CLEAR)
+👉 You need to create a Spring Boot project inside each folder
+Since you don’t have Spring Initializr in IntelliJ IDEA, use the browser method (simplest & correct).
+
+🧱 Step-by-Step (Do THIS now)
+🔹 Step 1: Open Spring Initializr in Browser
+Go to 👉 Spring Initializr
+
+🔹 Step 2: Create discovery-server project
+Fill like this:
+
+Project: Maven
+
+Language: Java
+
+Group: com.leetcode
+
+Artifact: discovery-server
+
+🔹 Step 3: Add Dependencies
+Click Add Dependencies and select:
+
+✅ Spring Web
+
+✅ Eureka Server
+
+🔹 Step 4: Generate Project
+👉 Click Generate → ZIP file downloads
+
+🔹 Step 5: Extract to Correct Folder
+VERY IMPORTANT ⚠️
+
+Extract ZIP into:
+
+E:\leetcode-clone\discovery-server
+After extraction, structure should look like:
+
+discovery-server/
+ ├── src/
+ ├── pom.xml
+ ├── mvnw
+❌ Don’t keep nested folder like:
+
+discovery-server/discovery-server ❌
+🔹 Step 6: Open in IntelliJ
+In IntelliJ:
+
+Right click discovery-server
+
+Click:
+
+Open Module / Open as Project
+🧠 What You Just Did
+👉 You converted:
+
+empty folder → Spring Boot microservice
+🚀 Repeat Later
+Do same for:
+
+api-gateway
+
+auth-service
+
+user-service
+
+problem-service
+
+submission-service
+
+(BUT not now — first finish discovery-server)
+
+🔥 NEXT STEP
+Once done, tell me:
+
+👉 "done discovery-server"
+
+I’ll give you:
+✅ Eureka Server annotation
+✅ application.properties config
+✅ Run and test
+
+Now we enter real microservices 🚀
+
+
+Uploaded image
+say exactly how to do
+
+Perfect 👍 you are on the correct screen. Now just follow EXACTLY:
+
+✅ Fill This Form (DO EXACTLY SAME)
+🔹 Top Section
+Project → ✅ Maven
+
+Language → ✅ Java
+
+Spring Boot → ✅ 3.5.13 (select this, not 4.x)
+
+🔹 Project Metadata
+Fill like this:
+
+Group: com.leetcode
+Artifact: discovery-server
+Name: discovery-server
+Package name: com.leetcode.discoveryserver
+Packaging: Jar
+Java: 17
+🔹 Dependencies (IMPORTANT)
+Click ADD...
+
+Search and add:
+
+Spring Web
+Eureka Server
+Make sure both are added ✅
+
+🔹 Click Generate
+👉 Click GENERATE
+ZIP file will download
+
+✅ NEXT (VERY IMPORTANT STEP)
+🔹 Extract ZIP
+Go to Downloads
+
+Right click ZIP → Extract
+
+Move extracted files into:
+
+E:\leetcode-clone\discovery-server
+⚠️ IMPORTANT (Avoid Mistake)
+Make sure structure is:
+
+discovery-server/
+ ├── src/
+ ├── pom.xml
+❌ NOT like this:
+
+discovery-server/discovery-server ❌
+✅ FINAL STEP
+Open in IntelliJ:
+
+Right click discovery-server
+
+Click:
+
+Open as Project
+🚀 DONE?
+Say:
+
+👉 done discovery-server
+
+Next I’ll guide you to:
+🔥 Convert it into Eureka Server (real microservice starts here)
+
+
+Uploaded image
+
+Perfect 👍 you are at the dependency selection screen.
+
+✅ EXACTLY What You Should Click
+👉 From your screenshot, select:
+
+✔️ THIS ONE:
+👉 Eureka Server (Spring Cloud Discovery) ✅
+
+❌ Do NOT select:
+❌ Eureka Discovery Client
+
+❌ Service Registry (TAS)
+
+🧠 Simple Understanding
+Eureka Server → 🧠 Brain (registry where services register)
+
+Eureka Client → 🧍 Services (like user-service, auth-service later)
+
+👉 Right now you are building the Brain (Discovery Server)
+
+✅ Final Checklist Before Generate
+Make sure:
+
+✅ Artifact = discovery-server
+
+✅ Java = 17
+
+✅ Dependencies:
+
+Spring Web
+
+Eureka Server
+
+🚀 Now Do This
+👉 Click GENERATE
+
+👉 Extract into:
+
+E:\leetcode-clone\discovery-server
+🔥 Next Step
+After this, tell me:
+
+👉 done discovery-server
+
+I’ll help you:
+
+✅ Add @EnableEurekaServer
+✅ Configure application.properties
+✅ Run and test in browser
+
+Now you're about to run your first microservice component 🚀
+
+
+done discovery-server
+
+Great 🔥 now real microservices work starts.
+
+✅ STEP 3: Convert into Eureka Server
+🔹 1. Add Annotation
+Open main class:
+
+DiscoveryServerApplication.java
+Modify like this:
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+@SpringBootApplication
+@EnableEurekaServer
+public class DiscoveryServerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DiscoveryServerApplication.class, args);
+    }
+}
+👉 This line is MOST IMPORTANT:
+
+@EnableEurekaServer
+🔹 2. Configure application.properties
+Go to:
+
+src/main/resources/application.properties
+Add this:
+
+server.port=8761
+
+spring.application.name=discovery-server
+
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+🔹 3. Run the Application
+👉 Right click main class → Run
+
+🔹 4. Verify in Browser
+Open:
+
+http://localhost:8761
+🎯 Expected Output
+You should see:
+
+👉 Eureka Dashboard UI
+
+It will show:
+
+No instances available
+✅ That’s correct (no services registered yet)
+
+🧠 What You Just Built
+You created:
+
+👉 Service Registry (Heart of Microservices)
+
+All other services will:
+
+Register here
+
+Discover each other through this
+
+🚀 Next Step
+Now we move to:
+
+👉 STEP 4: Create API Gateway
+
+This will:
+
+Route requests
+
+Connect all services
+
+If you're ready, say:
+
+👉 next api-gateway 👍
+
+
+Uploaded image
+it created like this ..is this ok?
+
+Good question 👍 — this is a very common mistake, and you caught it early 👏
+
+❌ Current Structure (NOT correct)
+Right now you have:
+
+discovery-server/
+   └── discovery-server/
+        ├── src/
+        ├── pom.xml
+👉 This is called a nested project ❌
+
+✅ Correct Structure (What we need)
+discovery-server/
+   ├── src/
+   ├── pom.xml
+🔧 How to Fix (2 minutes)
+🔹 Step 1: Open File Explorer (not IntelliJ)
+Go to:
+
+E:\leetcode-clone\discovery-server
+🔹 Step 2: Move Files
+Open inner folder:
+
+discovery-server (inside)
+Select ALL files:
+
+.mvn
+
+src
+
+pom.xml
+
+mvnw
+
+Cut (Ctrl + X)
+
+🔹 Step 3: Paste in Parent Folder
+Paste directly into:
+
+E:\leetcode-clone\discovery-server
+🔹 Step 4: Delete Empty Folder
+Delete this extra folder:
+
+discovery-server/discovery-server ❌
+🔹 Step 5: Refresh IntelliJ
+In IntelliJ:
+
+Right click → Reload Project
+OR
+
+Restart IDE (if needed)
+
+✅ Final Result
+You should see:
+
+discovery-server
+ ├── src
+ ├── pom.xml
+🚀 After Fix
+👉 Now continue with previous step:
+
+Add @EnableEurekaServer
+
+Add properties
+
+Run app
+
+🔥 Important Learning
+This mistake happens because:
+👉 Spring Initializr ZIP contains a folder inside
+
+So ALWAYS:
+
+Extract → Move inner content → Delete extra folder
+
+✅ Next
+After fixing and running:
+
+👉 tell me "eureka running"
+
+Then we move to API Gateway (very important) 🚀
+
+
+👉 next api-gateway 👍
+
+Perfect 🔥 now we move to API Gateway (very important component)
+
+🧱 STEP 4: Create API Gateway
+👉 This service will:
+
+Route requests to other services
+
+Act as entry point
+
+Integrate with Eureka
+
+✅ STEP 4.1: Create Project
+Go to 👉 Spring Initializr
+
+🔹 Fill Details
+Project: Maven
+Language: Java
+Spring Boot: 3.5.13
+Group: com.leetcode
+Artifact: api-gateway
+Name: api-gateway
+Package: com.leetcode.apigateway
+Java: 17
+🔹 Add Dependencies
+Click ADD... and select:
+
+Spring Web
+Spring Cloud Gateway
+Eureka Discovery Client
+🔹 Generate
+👉 Click GENERATE
+
+🔹 Extract (IMPORTANT)
+Extract into:
+
+E:\leetcode-clone\api-gateway
+⚠️ Same rule:
+
+Move inner files up if nested
+
+Final structure should be:
+
+api-gateway/
+ ├── src/
+ ├── pom.xml
+🔹 Open in IntelliJ
+Right click → Open as Project
+
+✅ STEP 4.2: Configure API Gateway
+🔹 application.properties
+Go to:
+
+src/main/resources/application.properties
+Add:
+
+server.port=8080
+
+spring.application.name=api-gateway
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+🔹 Enable Discovery
+Open main class:
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class ApiGatewayApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ApiGatewayApplication.class, args);
+    }
+}
+✅ STEP 4.3: Run Gateway
+👉 Run the application
+
+✅ STEP 4.4: Verify
+Open Eureka dashboard:
+
+http://localhost:8761
+👉 You should now see:
+
+API-GATEWAY
+✅ That means gateway registered successfully
+
+🧠 What You Built
+Client → API Gateway → (future services)
+              ↓
+          Eureka Server
+🔥 Important Note
+We haven't added routing yet
+👉 That comes after creating services
+
+🚀 Next Step
+Now we build:
+
+👉 auth-service (login, JWT, security)
+
+Say:
+
+👉 next auth-service 👍
+
+
+Uploaded image
+i fing many so what i have to choose just give me single anser
+
+👉 Choose ONLY THIS ONE:
+
+Spring Cloud Gateway ✅
+❌ Do NOT select:
+Reactive Gateway
+
+Any Enterprise options
+
+Anything else
+
+🧠 Simple Rule
+👉 If you see:
+
+Spring Cloud Gateway (SPRING CLOUD ROUTING) → ✅ SELECT THIS
+
+✅ Final Dependencies for API Gateway
+You should have ONLY:
+
+Spring Web
+Spring Cloud Gateway
+Eureka Discovery Client
+👉 That’s it. Nothing more.
+
+Once selected → click Generate
+
+👉 then say done api-gateway 👍
+
+
+
+Pasted text.txt
+Document
+
+Good 🔥 you did everything correctly — this is a very important real-world issue, so pay attention.
+
+❌ Problem (From Your Logs)
+You are getting:
+
+registration status: 404
+Cannot execute request on any known server
+📌 From your log: 
+
+
+🧠 What This Means (Simple)
+👉 Your API Gateway is trying to connect to Eureka
+
+BUT ❌
+👉 Eureka Server is NOT running / not reachable
+
+✅ ROOT CAUSE
+👉 You started:
+
+✅ api-gateway
+
+But ❌ NOT started:
+
+❌ discovery-server (Eureka)
+
+✅ FIX (VERY SIMPLE)
+🔹 Step 1: Start Eureka Server FIRST
+Go to:
+
+discovery-server → main class
+Run it
+
+🔹 Step 2: Verify Eureka
+Open browser:
+
+http://localhost:8761
+👉 You should see dashboard ✅
+
+🔹 Step 3: Restart API Gateway
+Stop api-gateway and run again
+
+✅ EXPECTED RESULT
+Now logs should show:
+
+Registered with Eureka
+status: UP
+And in browser:
+
+http://localhost:8761
+You will see:
+
+API-GATEWAY
+⚡ Important Rule (Remember Forever)
+ALWAYS START ORDER:
+
+1. discovery-server (Eureka) ✅
+2. api-gateway ✅
+3. other services later
+🚀 You're Doing Great
+This is exactly how real microservice debugging works 👍
+
+👉 Next Step
+Once it works, tell me:
+
+👉 "gateway connected"
+
+Then we move to:
+
+🔥 auth-service (JWT + Spring Security)
+
+
+done gateway..
+
+Perfect 🔥 now your core foundation is ready:
+
+✅ Eureka Server
+✅ API Gateway
+
+Now we move to VERY IMPORTANT SERVICE
+
+🔐 STEP 5: auth-service (Security + JWT)
+👉 This service will:
+
+Handle login/signup
+
+Generate JWT tokens
+
+Secure APIs
+
+✅ STEP 5.1: Create Project
+Go to 👉 Spring Initializr
+
+🔹 Fill Details
+Project: Maven
+Language: Java
+Spring Boot: 3.5.13
+Group: com.leetcode
+Artifact: auth-service
+Name: auth-service
+Package: com.leetcode.authservice
+Java: 17
+🔹 Add Dependencies
+Click ADD... and select:
+
+Spring Web
+Spring Security
+Spring Data JPA
+MySQL Driver
+Eureka Discovery Client
+Lombok
+🔹 Generate + Extract
+Extract into:
+
+E:\leetcode-clone\auth-service
+Fix nested folder if needed (same as before)
+
+🔹 Open in IntelliJ
+Right click → Open as Project
+
+✅ STEP 5.2: Basic Configuration
+🔹 application.properties
+server.port=8081
+
+spring.application.name=auth-service
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+spring.datasource.url=jdbc:mysql://localhost:3306/leetcode_auth
+spring.datasource.username=root
+spring.datasource.password=your_password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+⚠️ Before Running
+👉 Make sure:
+
+MySQL is running
+
+Database created:
+
+CREATE DATABASE leetcode_auth;
+🚀 What’s Next (Very Important)
+After this, we will implement:
+
+User Entity
+
+Login API
+
+JWT generation
+
+Spring Security config
+
+🧠 Architecture So Far
+Client
+   ↓
+API Gateway (8080)
+   ↓
+Auth Service (8081)
+   ↓
+Database (MySQL)
+🔥 Your Task Now
+👉 Create auth-service project
+👉 Configure properties
+
+✅ When done
+Say:
+
+👉 done auth-service
+
+Then I’ll guide you step-by-step:
+
+🔥 JWT + Security (most important for interviews)
+
+
+here you explained only about application.properties but you didnt explain about authserviceapplication
+
+Good 👍 you’re thinking correctly — we should NOT skip that.
+
+✅ auth-service main class (VERY IMPORTANT)
+Open:
+
+AuthServiceApplication.java
+🔹 What to Write
+package com.leetcode.authservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class AuthServiceApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(AuthServiceApplication.class, args);
+    }
+}
+🧠 Why This is Needed
+🔹 @SpringBootApplication
+👉 Basic Spring Boot startup
+
+🔹 @EnableDiscoveryClient ⭐
+👉 This is VERY IMPORTANT
+
+It tells:
+
+auth-service → register with Eureka
+🔥 What Happens Internally
+When you run auth-service:
+
+auth-service → connects to Eureka → registers itself
+Then in browser:
+
+👉 http://localhost:8761
+
+You will see:
+
+AUTH-SERVICE
+⚠️ Common Mistake
+❌ If you don’t add @EnableDiscoveryClient
+
+👉 Service will NOT register in Eureka
+
+✅ Checklist Before Running
+Make sure:
+
+✅ Eureka running (8761)
+
+✅ MySQL running
+
+✅ application.properties configured
+
+✅ Main class has @EnableDiscoveryClient
+
+🚀 Next Step
+Run auth-service
+
+Then check:
+
+👉 http://localhost:8761
+
+When done
+Say:
+
+👉 auth-service running
+
+Next we go to:
+
+🔥 User Entity + Login API (real backend starts here)
+
+
+Uploaded image
+is it an issue?
+
+Good 👍 — this is NOT an issue, don’t worry.
+
+✅ What You’re Seeing
+The red message:
+
+EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP...
+👉 This looks scary, but it’s NORMAL in development.
+
+🧠 Why This Happens
+Eureka has something called:
+
+👉 Self-Preservation Mode
+
+It triggers when:
+
+Low number of services
+
+Heartbeats are less
+
+Running in local environment
+
+✅ In Your Case
+You have:
+
+✅ API-GATEWAY → UP
+
+✅ AUTH-SERVICE → UP
+
+👉 That means EVERYTHING is working correctly ✅
+
+🔥 Important
+👉 This message does NOT affect functionality
+
+Your system is:
+
+WORKING PERFECTLY ✅
+⚠️ When is it a real problem?
+Only if:
+
+Services are DOWN but still showing UP
+
+Production environment issues
+
+👉 Not your case
+
+🧹 (Optional) Remove Warning
+If you want to hide it, add in discovery-server
+
+eureka.server.enable-self-preservation=false
+👉 But NOT required now
+
+🚀 You Are Doing Great
+You now have:
+
+✅ Eureka Server
+✅ API Gateway
+✅ Auth Service
+👉 This is already a real microservice system
+
+🔥 NEXT STEP (Real Coding Starts)
+Now we build:
+
+👉 User Entity + Login API
+
+Say:
+
+👉 next entity
+
+Now we enter:
+🔥 database + authentication logic (very important for interviews)
+
+
+before that just explain about application.properties file why we are using and what are those configurations defines.... give me simple explanation to remeber
+
+Good 👍 this is the right time to understand fundamentals. I’ll make it very simple + easy to remember.
+
+🧠 What is application.properties?
+👉 It is a configuration file for your Spring Boot app.
+
+👉 Think like:
+
+"Settings file for your application"
+🎯 Simple Analogy
+Mobile App → Settings (WiFi, Theme, Notifications)
+Spring App → application.properties (port, DB, Eureka, etc.)
+🔥 Why We Use It?
+👉 Instead of writing values in code, we keep them here:
+
+Without properties	With properties
+Hardcoded ❌	Configurable ✅
+Difficult to change ❌	Easy to change ✅
+🧱 Main Configurations You Used (Simple Meaning)
+🔹 1. Server Port
+server.port=8081
+👉 Meaning:
+
+Run this service on port 8081
+🔹 2. Application Name
+spring.application.name=auth-service
+👉 Meaning:
+
+This is the name shown in Eureka
+👉 That’s why you see:
+
+AUTH-SERVICE in dashboard
+🔹 3. Eureka Connection
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+👉 Meaning:
+
+Connect to Eureka Server at this URL
+🔹 4. Database Connection
+spring.datasource.url=jdbc:mysql://localhost:3306/leetcode_auth
+spring.datasource.username=root
+spring.datasource.password=your_password
+👉 Meaning:
+
+Connect to MySQL database
+🔹 5. JPA / Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+👉 Meaning:
+
+update → auto create/update tables
+
+show-sql=true → print SQL queries in console
+
+🧠 Easy Way to Remember
+👉 Just remember this pattern:
+
+application.properties =
+   PORT + NAME + CONNECTIONS + DATABASE + BEHAVIOR
+🔥 In Your Project
+discovery-server
+port
+
+eureka settings
+
+api-gateway
+port
+
+eureka connection
+
+auth-service
+port
+
+eureka connection
+
+database config
+
+⚡ One Line Summary
+application.properties = brain of configuration (controls how app runs)
+🚀 Next Step
+Now you're ready for real backend work:
+
+👉 Say "next entity"
+
+We’ll build:
+🔥 User Entity (JPA) + DB table creation
+
+
+ok clear go to next step
+
+Perfect 🔥 now we start real backend coding.
+
+🧱 STEP 6: Create User Entity (Database Table)
+👉 This is the first real feature of your system.
+
+🧠 What is Entity?
+Entity = Java class → Database table
+👉 Example:
+
+User class → user table
+✅ STEP 6.1: Create Package Structure
+Inside auth-service:
+
+com.leetcode.authservice
+   ├── entity
+   ├── repository
+   ├── service
+   ├── controller
+👉 Right click → New → Package
+
+✅ STEP 6.2: Create User Entity
+Go to:
+
+entity → New → Class → User
+🔹 Write This Code
+package com.leetcode.authservice.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String username;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    private String role;
+}
+🧠 Explanation (Simple)
+Annotation	Meaning
+@Entity	This class = DB table
+@Table	Table name = users
+@Id	Primary key
+@GeneratedValue	Auto increment
+@Column	Column rules
+🔥 What Will Happen Now
+When you run app:
+
+Spring Boot → Hibernate → MySQL
+👉 Automatically creates table:
+
+users
+------
+id
+username
+email
+password
+role
+⚠️ Important
+Make sure:
+
+spring.jpa.hibernate.ddl-auto=update
+Otherwise table won’t create
+
+✅ STEP 6.3: Run Application
+👉 Run auth-service
+
+👉 Check MySQL:
+
+USE leetcode_auth;
+SHOW TABLES;
+🎯 Expected Output
+users ✅
+🚀 Next Step
+Now we will build:
+
+👉 UserRepository (DB operations)
+
+Say:
+👉 next repository
+
+Now you're entering real backend development 🔥
+
+
+next...
+
+Great 🔥 now we move to database access layer
+
+🧱 STEP 7: Create UserRepository
+👉 This layer will:
+
+Talk to database (CRUD operations)
+🧠 What is Repository?
+Repository = Interface → handles DB queries
+👉 You don’t write SQL manually
+👉 Spring Data JPA does it for you 💥
+
+
+🧠 Explanation (Simple)
+🔹 JpaRepository<User, Long>
+
+👉 Gives you ready-made methods:
+
+save()
+findById()
+findAll()
+deleteById()
+🔹 findByEmail()
+
+👉 Custom method
+
+Spring automatically converts this into:
+
+SELECT * FROM users WHERE email = ?
+
+
+
+❌ Why You Are Getting 401 Unauthorized
+
+👉 Because you added:
+
+Spring Security dependency
+
+👉 By default, Spring Security does this:
+
+🔒 Blocks ALL APIs
+
+So your APIs:
+
+/auth/register
+/auth/login
+
+are also protected automatically ❌
+
+🧠 Default Behavior
+Spring Security → requires login for every request
+
+That’s why Postman shows:
+
+401 Unauthorized
+✅ FIX: Allow Public APIs
+
+We need to configure security
+
+
+🧱 STEP: Create Security Config
+
+Go to package:
+
+com.leetcode.authservice.config
+
+👉 Create class: SecurityConfig
+
+🧠 What This Does
+🔹 .requestMatchers("/auth/**").permitAll()
+
+👉 Allows:
+
+/auth/register
+/auth/login
+🔹 .anyRequest().authenticated()
+
+👉 Everything else requires login
+
+🔹 .csrf().disable()
+
+👉 Required for Postman testing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
