@@ -1,0 +1,67 @@
+Authentication (Spring interface)
+→ A Java interface used internally by Spring Security to represent the authenticated user
+
+💡 Example
+
+When a user logs in:
+
+Spring creates an object of Authentication
+It contains:
+username
+password
+roles/authorities
+authentication status
+
+⚡ One line to remember:
+
+SecurityContextHolder = place where Spring stores current user authentication details
+
+🔥 In your JWT project:
+
+After login:
+
+JWT is validated
+User info is stored in SecurityContextHolder
+You can access user anywhere in your backend
+..........................................................................................................
+
+HttpServletRequest is a Java interface.
+
+👉 Short meaning:
+It represents the incoming HTTP request from the client (browser/Postman).
+
+💡 In simple words:
+
+👉 “What did the client send to the server?” → stored here
+
+⚡ It contains:
+Request data (body)
+Headers (Authorization, Content-Type)
+Parameters (query params)
+URL info
+Cookies
+🧠 Example:
+String token = request.getHeader("Authorization");
+
+👉 Used to get JWT token from request
+
+🔥 In your Spring Boot project:
+Client sends request → comes as HttpServletRequest
+You extract:
+JWT token
+user data
+request params
+⚡ One line:
+
+HttpServletRequest = object that holds all data sent by client to server
+
+-----------------------------------------------------------------------------
+
+BCryptPasswordEncoder is a class in Spring Security.
+
+👉 Short meaning:
+It is used to encrypt (hash) passwords securely before saving them in the database.
+
+💡 In simple words:
+
+👉 “Convert plain password → secure unreadable form”

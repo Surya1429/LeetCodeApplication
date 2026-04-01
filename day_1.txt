@@ -1576,6 +1576,47 @@ com.leetcode.authservice.config
 
 
 
+🔐 What is HttpSecurity?
+
+👉 HttpSecurity is a Spring Security class used to configure security rules for HTTP requests.
+
+🧠 Simple Meaning
+HttpSecurity = controls who can access which API
+🎯 What It Does
+
+Using HttpSecurity, you can:
+
+✅ Allow or block APIs
+✅ Define authentication rules
+✅ Disable CSRF (for Postman/testing)
+✅ Add login/logout rules
+🔧 Example (Your Project)
+http
+  .csrf(csrf -> csrf.disable())
+  .authorizeHttpRequests(auth -> auth
+      .requestMatchers("/auth/**").permitAll()
+      .anyRequest().authenticated()
+  );
+🧠 Breakdown
+🔹 .csrf().disable()
+
+👉 Turns off CSRF protection (needed for testing APIs)
+
+🔹 .requestMatchers("/auth/**").permitAll()
+
+👉 Allows these APIs without login
+
+🔹 .anyRequest().authenticated()
+
+👉 All other APIs require authentication
+
+⚡ One-Line Memory Trick
+HttpSecurity = rules for securing your APIs
+🔥 Real-Life Analogy
+Security Guard (HttpSecurity)
+→ decides who can enter which room (API)
+
+
 
 
 
