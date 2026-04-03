@@ -65,3 +65,44 @@ It is used to encrypt (hash) passwords securely before saving them in the databa
 💡 In simple words:
 
 👉 “Convert plain password → secure unreadable form”
+
+
+RestTemplate is a class in Spring Boot / Spring Framework used to make HTTP calls to other APIs (services) from your application.
+
+🔹 Simple Meaning
+
+👉 It helps your backend talk to another backend.
+
+🔹 Why we use RestTemplate
+
+In your microservices project (like your Auth Service → User Service → Problem Service), services need to communicate.
+
+Instead of writing raw HTTP code, you use RestTemplate.
+
+🔹 What it can do
+
+RestTemplate allows you to:
+
+Send GET request → fetch data
+Send POST request → create data
+Send PUT request → update data
+Send DELETE request → delete data
+🔹 Example (VERY IMPORTANT)
+👉 Scenario:
+
+Your Auth Service wants to call User Service
+
+RestTemplate restTemplate = new RestTemplate();
+
+String url = "http://localhost:8082/users/email/test@gmail.com";
+
+User user = restTemplate.getForObject(url, User.class);
+🔹 Common Methods
+1. GET
+restTemplate.getForObject(url, ResponseType.class);
+2. POST
+restTemplate.postForObject(url, requestBody, ResponseType.class);
+3. PUT
+restTemplate.put(url, requestBody);
+4. DELETE
+restTemplate.delete(url);
